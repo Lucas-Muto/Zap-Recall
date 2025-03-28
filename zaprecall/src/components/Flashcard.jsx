@@ -2,10 +2,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import seta_play from '../../assets/seta_play.png';
 import seta_virar from '../../assets/seta_virar.png';
+import icone_certo from '../../assets/icone_certo.png';
+import icone_erro from '../../assets/icone_erro.png';
+import icone_quase from '../../assets/icone_quase.png';
 
 const CardContainer = styled.div`
   width: 100%;
-  height: ${props => props.isQuestion ? '131px' : '65px'};
+  min-height: ${props => props.isQuestion ? '131px' : '65px'};
   background-color: ${props => props.isQuestion ? '#FFFFD4' : '#FFFFFF'};
   border-radius: 5px;
   margin-bottom: 25px;
@@ -15,7 +18,7 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.isQuestion ? 'column' : 'row'};
   align-items: ${props => props.isQuestion ? 'flex-start' : 'center'};
-  justify-content: ${props => props.isQuestion ? 'space-between' : 'space-between'};
+  justify-content: space-between;
   position: relative;
 `;
 
@@ -23,7 +26,13 @@ const QuestionNumber = styled.p`
   font-family: 'Recursive', sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #333333;
+  color: ${props => {
+    if (props.status === 'wrong') return '#FF3030';
+    if (props.status === 'almost') return '#FF922E';
+    if (props.status === 'zap') return '#2FBE34';
+    return '#333333';
+  }};
+  text-decoration: ${props => props.status ? 'line-through' : 'none'};
 `;
 
 const Text = styled.p`
@@ -49,6 +58,7 @@ const AnswerButtons = styled.div`
   width: 100%;
   justify-content: space-between;
   margin-top: auto;
+  padding: 15px 0 0;
 `;
 
 const AnswerButton = styled.button`
@@ -68,8 +78,14 @@ const AnswerButton = styled.button`
   }};
 `;
 
-export default function Flashcard({ index, question, answer }) {
-  const [cardState, setCardState] = useState('closed'); // closed, question, answer
+const StatusIcon = styled.img`
+  width: 23px;
+  height: 23px;
+`;
+
+export default function Flashcard({ index, question, answer, onAnswer }) {
+  const [cardState, setCardState] = useState('closed'); // closed, question, answer, completed
+  const [status, setStatus] = useState(null);
 
   function showQuestion() {
     setCardState('question');
@@ -79,8 +95,20 @@ export default function Flashcard({ index, question, answer }) {
     setCardState('answer');
   }
 
+  function handleAnswer(answerType) {
+    setStatus(answerType);
+    setCardState('completed');
+    onAnswer(answerType);
+  }
+
+  const statusIcons = {
+    wrong: icone_erro,
+    almost: icone_quase,
+    zap: icone_certo
+  };
+
   return (
-    <CardContainer isQuestion={cardState !== 'closed'}>
+    <CardContainer isQuestion={cardState === 'question' || cardState === 'answer'}>
       {cardState === 'closed' && (
         <>
           <QuestionNumber>Pergunta {index + 1}</QuestionNumber>
@@ -104,10 +132,23 @@ export default function Flashcard({ index, question, answer }) {
         <>
           <Text>{answer}</Text>
           <AnswerButtons>
-            <AnswerButton type="wrong">Não lembrei</AnswerButton>
-            <AnswerButton type="almost">Quase não lembrei</AnswerButton>
-            <AnswerButton type="zap">Zap!</AnswerButton>
+            <AnswerButton type="wrong" onClick={() => handleAnswer('wrong')}>
+              Não lembrei
+            </AnswerButton>
+            <AnswerButton type="almost" onClick={() => handleAnswer('almost')}>
+              Quase não lembrei
+            </AnswerButton>
+            <AnswerButton type="zap" onClick={() => handleAnswer('zap')}>
+              Zap!
+            </AnswerButton>
           </AnswerButtons>
+        </>
+      )}
+
+      {cardState === 'completed' && (
+        <>
+          <QuestionNumber status={status}>Pergunta {index + 1}</QuestionNumber>
+          <StatusIcon src={statusIcons[status]} alt="Status da resposta" />
         </>
       )}
     </CardContainer>
