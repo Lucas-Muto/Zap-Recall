@@ -1,5 +1,8 @@
 # ZapRecall ⚡
 
+## Deploy
+O projeto está disponível em: [Link do Deploy](https://zap-recall-azure.vercel.app)
+
 ## Sobre
 ZapRecall é uma aplicação web de flashcards desenvolvida com React. O projeto permite aos usuários estudarem através de cartões de memória interativos, onde podem avaliar seu conhecimento em diferentes tópicos.
 
@@ -52,8 +55,5 @@ O layout do projeto foi desenvolvido seguindo o design fornecido no Figma, com f
 - Título: Righteous
 - Textos: Recursive
 
-## Deploy
-O projeto está disponível em: [Link do Deploy](seu-link-do-deploy-aqui)
-
 ## Desenvolvido por
-[Seu Nome] - Projeto desenvolvido como parte do bootcamp da Driven Education
+[Lucas Sabbag Muto] - Projeto desenvolvido para a Driven Education.
