@@ -4,6 +4,8 @@ import GlobalStyle from './styles/GlobalStyle';
 import Header from './components/Header';
 import Flashcard from './components/Flashcard';
 import cards from './data/cards';
+import party from '../assets/party.png';
+import sad from '../assets/sad.png';
 
 const Container = styled.div`
   width: 100%;
@@ -17,29 +19,70 @@ const Container = styled.div`
 
 const FlashcardsContainer = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Footer = styled.footer`
   width: 100%;
-  min-height: 50px;
+  min-height: 70px;
   background-color: #FFFFFF;
   position: fixed;
   bottom: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
   font-family: 'Recursive', sans-serif;
-  font-size: 18px;
   color: #333333;
+`;
+
+const ResultMessage = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+
+  img {
+    width: 23px;
+    height: 23px;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+`;
+
+const Counter = styled.p`
+  font-size: 18px;
 `;
 
 function App() {
   const [answeredCards, setAnsweredCards] = useState(0);
+  const [results, setResults] = useState([]);
 
-  function handleCardAnswer() {
+  function handleCardAnswer(type) {
     setAnsweredCards(prev => prev + 1);
+    setResults(prev => [...prev, type]);
   }
+
+  function getResultMessage() {
+    if (answeredCards !== cards.length) return null;
+
+    const hasWrong = results.includes('wrong');
+    return {
+      icon: hasWrong ? sad : party,
+      title: hasWrong ? 'Putz...' : 'Parabéns!',
+      message: hasWrong 
+        ? 'Ainda faltam alguns... Mas não desanime!' 
+        : 'Você não esqueceu de nenhum flashcard!'
+    };
+  }
+
+  const resultMessage = getResultMessage();
 
   return (
     <>
@@ -58,7 +101,18 @@ function App() {
           ))}
         </FlashcardsContainer>
         <Footer>
-          {answeredCards}/{cards.length} CONCLUÍDOS
+          {resultMessage && (
+            <ResultMessage>
+              <img src={resultMessage.icon} alt="Resultado" />
+              <div>
+                <h2>{resultMessage.title}</h2>
+                <p>{resultMessage.message}</p>
+              </div>
+            </ResultMessage>
+          )}
+          <Counter>
+            {answeredCards}/{cards.length} CONCLUÍDOS
+          </Counter>
         </Footer>
       </Container>
     </>

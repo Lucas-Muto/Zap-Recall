@@ -7,7 +7,7 @@ import icone_erro from '../../assets/icone_erro.png';
 import icone_quase from '../../assets/icone_quase.png';
 
 const CardContainer = styled.div`
-  width: 100%;
+  width: 300px;
   min-height: ${props => props.isQuestion ? '131px' : '65px'};
   background-color: ${props => props.isQuestion ? '#FFFFD4' : '#FFFFFF'};
   border-radius: 5px;
