@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import seta_play from '../../assets/seta_play.png';
+import seta_virar from '../../assets/seta_virar.png';
 
 const CardContainer = styled.div`
   width: 100%;
-  height: 65px;
+  height: ${props => props.isQuestion ? '131px' : '65px'};
   background-color: #FFFFFF;
   border-radius: 5px;
   margin-bottom: 25px;
@@ -11,8 +13,10 @@ const CardContainer = styled.div`
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: ${props => props.isQuestion ? 'column' : 'row'};
+  align-items: ${props => props.isQuestion ? 'flex-start' : 'center'};
+  justify-content: ${props => props.isQuestion ? 'space-between' : 'space-between'};
+  position: relative;
 `;
 
 const QuestionNumber = styled.p`
@@ -22,17 +26,47 @@ const QuestionNumber = styled.p`
   color: #333333;
 `;
 
-const PlayButton = styled.img`
+const QuestionText = styled.p`
+  font-family: 'Recursive', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333333;
+  margin: 18px 0;
+`;
+
+const Button = styled.img`
   width: 20px;
   height: 23px;
   cursor: pointer;
+  position: ${props => props.isQuestion ? 'absolute' : 'static'};
+  bottom: ${props => props.isQuestion ? '15px' : 'auto'};
+  right: ${props => props.isQuestion ? '15px' : 'auto'};
 `;
 
-export default function Flashcard({ index }) {
+export default function Flashcard({ index, question }) {
+  const [isQuestion, setIsQuestion] = useState(false);
+
+  function showQuestion() {
+    setIsQuestion(true);
+  }
+
   return (
-    <CardContainer>
-      <QuestionNumber>Pergunta {index + 1}</QuestionNumber>
-      <PlayButton src={seta_play} alt="Iniciar pergunta" />
+    <CardContainer isQuestion={isQuestion}>
+      {!isQuestion ? (
+        <>
+          <QuestionNumber>Pergunta {index + 1}</QuestionNumber>
+          <Button src={seta_play} alt="Iniciar pergunta" onClick={showQuestion} />
+        </>
+      ) : (
+        <>
+          <QuestionText>{question}</QuestionText>
+          <Button 
+            isQuestion={true}
+            src={seta_virar} 
+            alt="Virar carta" 
+          />
+        </>
+      )}
     </CardContainer>
   );
 }

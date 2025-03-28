@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 import Header from './components/Header';
 import Flashcard from './components/Flashcard';
+import cards from './data/cards';
 
 const Container = styled.div`
   width: 100%;
@@ -24,8 +25,12 @@ function App() {
       <Container>
         <Header />
         <FlashcardsContainer>
-          {[0, 1, 2, 3].map((index) => (
-            <Flashcard key={index} index={index} />
+          {cards.map((card, index) => (
+            <Flashcard 
+              key={index} 
+              index={index}
+              question={card.question}
+            />
           ))}
         </FlashcardsContainer>
       </Container>
