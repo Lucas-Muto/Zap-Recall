@@ -1,12 +1,59 @@
-# React + Vite
+# ZapRecall ⚡
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Sobre
+ZapRecall é uma aplicação web de flashcards desenvolvida com React. O projeto permite aos usuários estudarem através de cartões de memória interativos, onde podem avaliar seu conhecimento em diferentes tópicos.
 
-Currently, two official plugins are available:
+## Funcionalidades
+- 📝 Deck com 8 flashcards sobre React
+- 🔄 Cards interativos com sistema de virada
+- ✅ Sistema de avaliação de resposta:
+  - Zap! (Lembrou imediatamente)
+  - Quase não lembrei (Lembrou com esforço)
+  - Não lembrei (Não conseguiu lembrar)
+- 📊 Contador de progresso
+- 🎯 Feedback visual do desempenho ao finalizar o deck
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
+- React
+- Vite
+- Styled Components
+- JavaScript
 
-## Expanding the ESLint configuration
+## Como rodar o projeto
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone o repositório
+```bash
+git clone https://github.com/seu-usuario/zaprecall.git
+```
+
+2. Instale as dependências
+```bash
+npm install
+```
+
+3. Execute o projeto
+```bash
+npm run dev
+```
+
+## Layout
+O layout do projeto foi desenvolvido seguindo o design fornecido no Figma, com foco em uma experiência mobile-first.
+
+### Cores
+- Background principal: `#FB6B6B`
+- Card aberto: `#FFFFD4`
+- Card fechado: `#FFFFFF`
+- Botões de resposta:
+  - Não lembrei: `#FF3030`
+  - Quase não lembrei: `#FF922E`
+  - Zap!: `#2FBE34`
+
+### Fontes
+- Título: Righteous
+- Textos: Recursive
+
+## Deploy
+O projeto está disponível em: [Link do Deploy](seu-link-do-deploy-aqui)
+
+## Desenvolvido por
+[Seu Nome] - Projeto desenvolvido como parte do bootcamp da Driven Education
