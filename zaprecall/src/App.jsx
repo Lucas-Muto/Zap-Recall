@@ -30,6 +30,7 @@ function App() {
               key={index} 
               index={index}
               question={card.question}
+              answer={card.answer}
             />
           ))}
         </FlashcardsContainer>
