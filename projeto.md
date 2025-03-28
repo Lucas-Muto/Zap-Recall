@@ -4,11 +4,11 @@
 - Quando lembramos instantaneamente de um flashcard, tivemos um "Zap!"⚡
 - Conjuntos de flashcards são chamados de decks. Este app deverá possuir um deck com pelo menos 8 flashcards.
 
-Siga os layouts das telas que estão no print anexado ao prompt no chat. 
+
 
 
 🛠️ Recursos
-As imagens usadas nesse projeto estão na pasta "assets".
+- As imagens usadas nesse projeto estão na pasta "assets".
 
 
 ✅ Requisitos
@@ -18,15 +18,17 @@ Geral:
 - Todo o armazenamento de informações deve ser feito via estados.
 - Nesse projeto, a estilização deve ser feita com styled-components obrigatoriamente.
 - Você pode usar o deck que desejar com perguntas sobre qualquer tema que te inspire. Mas, caso prefira, temos aqui um exemplo de um deck sobre React:
-    Q: O que é JSX? R: Uma extensão de linguagem do JavaScript
-    Q: O React é __  R: uma biblioteca JavaScript para construção de interfaces
-    Q: Componentes devem iniciar com __  R: letra maiúscula
-    Q: Podemos colocar __ dentro do JSX R:: expressões
-    Q: O ReactDOM nos ajuda __  R: interagindo com a DOM para colocar componentes React na mesma
-    Q: Usamos o npm para __  R: gerenciar os pacotes necessários e suas dependências
-    Q: Usamos props para __ R: passar diferentes informações para componentes 
-    Q: Usamos estado (state) para __  R: dizer para o React quais informações quando atualizadas devem renderizar a tela novamente
+    - Q: O que é JSX? R: Uma extensão de linguagem do JavaScript
+    - Q: O React é __  R: uma biblioteca JavaScript para construção de interfaces
+    - Q: Componentes devem iniciar com __  R: letra maiúscula
+    - Q: Podemos colocar __ dentro do JSX R:: expressões
+    - Q: O ReactDOM nos ajuda __  R: interagindo com a DOM para colocar componentes React na mesma
+    - Q: Usamos o npm para __  R: gerenciar os pacotes necessários e suas dependências
+    - Q: Usamos props para __ R: passar diferentes informações para componentes 
+    - Q: Usamos estado (state) para __  R: dizer para o React quais informações quando atualizadas devem renderizar a tela novamente
+
     Em formato de objeto:
+
     const cards = [
 	{ question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
 	{ question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },
@@ -44,8 +46,8 @@ Layout:
 - Aplicar layout seguindo o Figma.
 - Para os textos, use as fontes indicadas no layout do Figma.
 - Note que as medidas do tamanho das telas no figma são apenas para referência! 
-    Apesar de o projeto ser apenas mobile, celulares diferentes possuem dimensões diferentes e seu site deve funcionar independentemente disso. 
-    A tela não deve ter tamanho fixo. Teste o seu layout com várias dimensões de tela diferentes.
+    - Apesar de o projeto ser apenas mobile, celulares diferentes possuem dimensões diferentes e seu site deve funcionar independentemente disso. 
+    - A tela não deve ter tamanho fixo. Teste o seu layout com várias dimensões de tela diferentes.
 
 
 Componentização e dados:
