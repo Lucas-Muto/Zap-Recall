@@ -15,7 +15,7 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h1`
-  font-family: 'Recursive', sans-serif;
+  font-family: 'Righteous', cursive;
   font-size: 36px;
   color: #FFFFFF;
   font-weight: 400;
